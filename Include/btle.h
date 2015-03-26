@@ -103,7 +103,7 @@ typedef enum
 typedef uint16_t btle_adv_interval_t;
 
 /** @brief BTLE scan interval type (_SHALL_ be fully compatible with the type in the HCI). */
-typedef uint16_t btle_scan_interval_t;
+typedef uint32_t btle_scan_interval_t;
 
 /** @brief BTLE connection interval type (_SHALL_ be fully compatible with the type in the HCI). */
 typedef uint16_t btle_conn_interval_t;
@@ -115,7 +115,7 @@ typedef uint16_t btle_connection_handle_t;
 typedef uint16_t btle_data_length_t;
 
 /** @brief BTLE scan window type (_SHALL_ be fully compatible with the type in the HCI). */
-typedef uint16_t btle_scan_window_t;
+typedef uint32_t btle_scan_window_t;
 
 /** @brief BTLE connection latency type (_SHALL_ be fully compatible with the type in the HCI). */
 typedef uint16_t  btle_conn_latency_t;
