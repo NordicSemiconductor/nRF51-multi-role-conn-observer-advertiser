@@ -217,14 +217,14 @@ static void m_adv_report_generate (uint8_t * const pkt)
   
   report.valid_packets = m_packets_valid;
   report.invalid_packets = m_packets_invalid;
-  memcpy (adv_report->address, &pkt[3], BTLE_DEVICE_ADDRESS__SIZE);
-  adv_report->address_type = pkt[1] & 0x01 ? BTLE_ADDR_TYPE_RANDOM : BTLE_ADDR_TYPE_PUBLIC;
+  memcpy (adv_report->address, &pkt[2], BTLE_DEVICE_ADDRESS__SIZE);
+  adv_report->address_type = pkt[0] & 0x01 ? BTLE_ADDR_TYPE_RANDOM : BTLE_ADDR_TYPE_PUBLIC;
   adv_report->rssi = m_rssi;
   
   if (has_data)
   {
-    adv_report->length_data = (pkt[2] & 0xFC) - BTLE_DEVICE_ADDRESS__SIZE;
-    memcpy(adv_report->report_data, &pkt[9], BTLE_ADVERTISING_DATA__SIZE);
+    adv_report->length_data = (pkt[1] & 0xFC) - BTLE_DEVICE_ADDRESS__SIZE;
+    memcpy(adv_report->report_data, &pkt[8], BTLE_ADVERTISING_DATA__SIZE);
   }
   
   nrf_report_disp_dispatch (&report);
