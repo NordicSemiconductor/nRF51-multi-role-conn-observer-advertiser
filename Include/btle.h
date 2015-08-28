@@ -687,6 +687,7 @@ typedef struct
   uint8_t                     length_data;
   uint8_t                     report_data[BTLE_ADVERTISING_DATA__SIZE];
   uint8_t                     rssi;
+  uint8_t					   channel;
 } btle_ev_param_le_advertising_report_t;
 
 typedef struct

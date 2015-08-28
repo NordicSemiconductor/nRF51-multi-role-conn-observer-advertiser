@@ -33,6 +33,7 @@
  */
 
 #include "ll_scan.h"
+#include "channel_resolver.h"
 
 #include "btle.h"
 #include "nrf_report_disp.h"
@@ -174,6 +175,7 @@ static void m_adv_report_generate (uint8_t * const pkt)
   bool has_data = false;
   nrf_report_t report;
   btle_ev_param_le_advertising_report_t *adv_report = &report.event.params.le_advertising_report_event;
+  adv_report->channel = channel_resolver_get_channel();
   
   /* Validate the RSSI value. It is 7 bits, so a value above 0x7F is invalid */
   if (m_rssi > 0x7F)
