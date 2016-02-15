@@ -50,9 +50,10 @@ void adv_rng_init(uint8_t *rng_pool)
 	sd_rand_application_bytes_available_get(&bytes_available);
 	
 	/* fill until more rand bytes available than there is room for */
-	for (; 255 - filled < bytes_available; filled += bytes_available)
+	for (; 255 - filled > bytes_available; )
 	{
 		sd_rand_application_vector_get(&rng_pool[filled], bytes_available);
+		filled += bytes_available;
 		sd_rand_application_bytes_available_get(&bytes_available);
 	}
 	

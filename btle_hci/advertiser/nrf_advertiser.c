@@ -136,6 +136,10 @@ void btle_hci_adv_sd_evt_handler(uint32_t event)
 			DEBUG_PIN_POKE(5);
 			ctrl_timeslot_order();
 			break;
+			
+		case NRF_EVT_FLASH_OPERATION_SUCCESS: 
+		        /* Exclude falsh operation event. */
+		        break;
 		
 		default:
 			/* Invalid event type */
